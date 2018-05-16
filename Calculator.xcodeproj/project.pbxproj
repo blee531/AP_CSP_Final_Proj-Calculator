@@ -13,6 +13,8 @@
 		AE78DC7A20ABBF1D009A07B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DC7920ABBF1D009A07B9 /* main.m */; };
 		AE78DC8520ABBF1E009A07B9 /* CalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DC8420ABBF1E009A07B9 /* CalculatorTests.m */; };
 		AE78DC9020ABBF1E009A07B9 /* CalculatorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DC8F20ABBF1E009A07B9 /* CalculatorUITests.m */; };
+		AE78DC9F20ABBF75009A07B9 /* MainUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DC9E20ABBF75009A07B9 /* MainUIController.m */; };
+		AE78DCA220ABBFA0009A07B9 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DCA120ABBFA0009A07B9 /* Calculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		AE78DC8B20ABBF1E009A07B9 /* CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE78DC8F20ABBF1E009A07B9 /* CalculatorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorUITests.m; sourceTree = "<group>"; };
 		AE78DC9120ABBF1E009A07B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE78DC9D20ABBF75009A07B9 /* MainUIController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainUIController.h; sourceTree = "<group>"; };
+		AE78DC9E20ABBF75009A07B9 /* MainUIController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainUIController.m; sourceTree = "<group>"; };
+		AE78DCA020ABBFA0009A07B9 /* Calculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
+		AE78DCA120ABBFA0009A07B9 /* Calculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,10 @@
 			children = (
 				AE78DC7020ABBF1B009A07B9 /* AppDelegate.h */,
 				AE78DC7120ABBF1B009A07B9 /* AppDelegate.m */,
+				AE78DC9D20ABBF75009A07B9 /* MainUIController.h */,
+				AE78DC9E20ABBF75009A07B9 /* MainUIController.m */,
+				AE78DCA020ABBFA0009A07B9 /* Calculator.h */,
+				AE78DCA120ABBFA0009A07B9 /* Calculator.m */,
 				AE78DC7320ABBF1D009A07B9 /* Assets.xcassets */,
 				AE78DC7520ABBF1D009A07B9 /* MainMenu.xib */,
 				AE78DC7820ABBF1D009A07B9 /* Info.plist */,
@@ -256,7 +266,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE78DC7A20ABBF1D009A07B9 /* main.m in Sources */,
+				AE78DCA220ABBFA0009A07B9 /* Calculator.m in Sources */,
 				AE78DC7220ABBF1B009A07B9 /* AppDelegate.m in Sources */,
+				AE78DC9F20ABBF75009A07B9 /* MainUIController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

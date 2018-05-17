@@ -17,3 +17,13 @@ Haven't finish main analyze function
 Haven't finish UI Controller
 Haven't finish UI.xib
 }
+
+@time{20180517.105700}{
+finished 
+    -
+    create number digit list
+    construct number base on list
+    -
+-edit analyze operation hierarchy
+cont. from line 72-85
+}

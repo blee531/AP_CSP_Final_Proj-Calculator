@@ -6,6 +6,8 @@
 //  Copyright © 2018年 Ushio Cheng. All rights reserved.
 //
 
+//Continue @ Line 41
+
 #import "Calculator.h"
 
 @implementation Calculator
@@ -13,17 +15,132 @@
 
 
 -(double)evaluateExpression:(NSString *) expression{
-    NSMutableArray * charList = [[NSMutableArray alloc] initWithCapacity:@%d, (expression.length)];
-    NSMutableArray * operatorPosition = [[NSMutableArray alloc] initWithCapacity:@1];
+    //variable declearation
+    NSUInteger inputLength = expression.length;
+    NSMutableArray * charList = [[NSMutableArray alloc] initWithCapacity:inputLength];
+    NSMutableArray * operatorPosition = [[NSMutableArray alloc] initWithCapacity:1];
+    int operationNumber = 0;
+    NSMutableDictionary * operationList = [[NSMutableDictionary alloc] initWithCapacity:1];
+    double result=404;//if return 404, result may failed to be operated
+    //main
     for(NSUInteger pointer = 0;pointer<expression.length;pointer++){
-        char charAtPointer = [expression characterAtIndex:i]
-        [charList replaceObjectAtIndex:pointer withObject:charAtPointer];
+        char charAtPointer = [expression characterAtIndex:pointer];
+        NSString * stringFormOfCharAtPointer = [[NSString alloc] initWithFormat:@"%c", charAtPointer];
+        [charList replaceObjectAtIndex:pointer withObject:stringFormOfCharAtPointer];
         if(charAtPointer=='+'||charAtPointer=='-'||charAtPointer=='*'||charAtPointer=='/'){
-            [operatorPosition addObject:pointer];
+            [operatorPosition addObject:[[NSNumber alloc] initWithUnsignedLong:pointer]];
+            operationNumber++;
         }
     }
-    NSMutableDictionary * operationList = [[NSMutableDictionary alloc] initWithCapacity:@1];
-    [operationList setObject:(ObjectType)anObject forKey:operatorPosition[pointer]];
+    if (operationNumber==0) {
+        goto noOperation;
+    }
+    [operatorPosition removeObjectAtIndex:0];
+    for(NSUInteger pointer = 0;pointer<operationNumber;pointer++){
+        char charAtPointer = [expression characterAtIndex:pointer];
+        NSString * stringFormOfCharAtPointer = [[NSString alloc] initWithFormat:@"%c", charAtPointer];
+        [operationList setObject:stringFormOfCharAtPointer forKey:operatorPosition[pointer]];
+    }//------------------------------------------------Add operator analyze function
+    
+    noOperation : {//label, jump when no operation sign found
+        //return section
+        if (operationNumber==0) {
+            //!!!: NO operation Error
+            NSLog(@"Error! error from calculator.eval there is no operator!");
+            return result;//change to output orig number
+        } else {
+            return result;
+        }
+    }
 }
+
+/**
+ * @brief Construct a double base on a string form number
+ * @param stringFormNumber the string form of the number. as NSMutableString
+ * @return the number created based on the string or 0 if error occur. as double
+ * @remark if error, it would throw 0 as output and make NSLog.
+ * @code
+ *      if (percisionLevel==-1) {
+ *          result = [Calculator appendInteger:(int)chatAtPointer toNumber:result withPercision:-1];
+ *      } else {
+ *          result = [Calculator appendInteger:(int)chatAtPointer toNumber:result withPercision:percisionLevel];
+ *          percisionLevel++;
+ *      }
+ * @endcode
+ */
++(double)constructNumberFromString:(NSMutableString *) stringFormNumber{
+    int percisionLevel = -1;
+    Boolean errorQ = false;
+    double result=0;
+    for (int pointer=0; pointer < stringFormNumber.length; pointer++) {
+        char chatAtPointer = [stringFormNumber characterAtIndex:pointer];
+        if (chatAtPointer=='.'&&percisionLevel!=-1) {
+            errorQ = true;
+            NSLog(@"Error! error from calculate.constructNumber: two dot appear in one number!");
+            goto errorJumpLabel;
+        }
+        if (chatAtPointer=='.') {
+            percisionLevel = 0;
+        }else{
+            if (percisionLevel==-1) {
+                result = [Calculator appendInteger:(int)chatAtPointer toNumber:result withPercision:-1];
+            } else {
+                result = [Calculator appendInteger:(int)chatAtPointer toNumber:result withPercision:percisionLevel];
+                percisionLevel++;
+            }
+        }
+    }
+errorJumpLabel:{
+    if (errorQ) {
+        return 0;//error return
+    }else{
+        return result;
+    }
+}
+}
+
+
+/**
+ * @brief Add a digit to an existing number.
+ * @param integer The digit is going to be add to the number. as int
+ * @param originalNumber The original number. as double
+ * @param percision The percision param is number of digits from dot, ex.1.->0,0.1->1,0.01->2, etc as int
+ * @return the new number. as double
+ * @remark if percision is -1, the number is int and would treat as append int
+ * @code
+ *      if(percision==0){
+ *          return orignum*10+integer;
+ *      }else{
+ *          return orignum+integer/10^(perciesion+1)    //ex.{2,10.1,1}->10.12
+ * @endcode
+ */
++(double)appendInteger:(int)integer toNumber:(double)originalNumber withPercision:(int) percision{
+    if (percision==0) {
+        return (originalNumber*10+integer);
+    } else {
+        return (originalNumber+((double)integer)/[Calculator powerOfNumber:10 toExponent:(percision+1)]);
+    }
+}
+
+
++(double)powerOfNumber:(double)base toExponent:(int)exponent{
+    double result=1;
+    if (exponent==0) {
+        return result;
+    } else {
+        if (exponent>0) {
+            for (int repeatTimes=0; repeatTimes<exponent; repeatTimes++) {
+                result*=base;
+            }
+            return result;
+        } else {
+            for (int repeatTimes=0; repeatTimes<exponent; repeatTimes++) {
+                result/=base;
+            }
+            return result;
+        }
+    }
+}
+
 
 @end

@@ -18,6 +18,10 @@
 
 -(double)evaluateExpression:(NSString *) expression;
 
++(double)constructNumberFromString:(NSMutableString *) stringFormNumber;
 
++(double)appendInteger:(int)integer toNumber:(double)originalNumber withPercision:(int) percision;
+
++(double)powerOfNumber:(double)base toExponent:(int)exponent;
 
 @end

@@ -1,0 +1,154 @@
+//  AppDelegate.m
+
+#import "AppDelegate.h"
+
+@interface AppDelegate ()
+
+@property (weak) IBOutlet NSWindow *window;
+@end
+
+@implementation AppDelegate
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+// Insert code here to initialize your application
+}
+
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification {
+// Insert code here to tear down your application
+}
+
+
+@end
+
+
+
+
+
+
+
+
+
+//  main.m
+#import <Foundation/Foundation.h>
+
+int main(int argc, const char * argv[]) {
+@autoreleasepool {
+NSLog(@"%d",sum);
+}
+return 0;
+}
+
+
+
+
+
+
+
+//  Fraction.h
+//  Prog1
+
+#import <Foundation/Foundation.h>
+
+@interface Fraction : NSObject
+
+-(void) setNumerator: (int) newNumerator;
+-(void) setDenominator: (int) newDenominator;
+-(int) numerator;
+-(int) denominator;
+
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//  Fraction.m
+//  Prog1
+//
+//  Created by Ushio Cheng on 2018/5/5.
+//  Copyright © 2018年 Ushio Cheng. All rights reserved.
+//
+
+#import "Fraction.h"
+
+@implementation Fraction{
+int numerator;
+int denominator;
+}
+
+- (NSString *)description   {//May be leak when turn off ARC
+NSString * result = [[NSString alloc] initWithFormat:@"This is a fraction which have value: %i/%i",numerator,denominator];
+return result;
+}
+-(void)setNumerator:(int)newNumerator{
+numerator=newNumerator;
+}
+
+-(void)setDenominator:(int)newDenominator{
+denominator=newDenominator;
+}
+
+-(int) numerator{
+return numerator;
+}
+-(int) denominator{
+return denominator;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Header Document
+/*!
+@header ViewController.h
+
+@brief This is the header file where my super-code is contained.
+
+This file contains the most importnant method and properties decalaration. It's parted by two methods in total, which can be used to perform temperature conversions.
+
+@author Your_Name
+@copyright  2015 Your_Name
+@version    15.12.7
+@remark Have Turn OFF ARC
+*/
+
+//Method Comment
+/**
+* @brief  Convience Initializer .
+* @discussion a discussion
+* @param  newHeight The new height value.
+* @param  newWidth The new width value.
+* @return self: Rectangle Object.
+* @code
+*    height = newHeight;
+*    width = newWidth;
+*    return self;
+* @endcode
+* @remark This is a method that would use normally.
+*/

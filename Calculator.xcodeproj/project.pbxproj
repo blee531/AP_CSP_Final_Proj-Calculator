@@ -15,6 +15,7 @@
 		AE78DC9020ABBF1E009A07B9 /* CalculatorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DC8F20ABBF1E009A07B9 /* CalculatorUITests.m */; };
 		AE78DC9F20ABBF75009A07B9 /* MainUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DC9E20ABBF75009A07B9 /* MainUIController.m */; };
 		AE78DCA220ABBFA0009A07B9 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DCA120ABBFA0009A07B9 /* Calculator.m */; };
+		AE78DCA420AD1CC7009A07B9 /* Obj-C Frame Code Reference in Resources */ = {isa = PBXBuildFile; fileRef = AE78DCA320AD1CC7009A07B9 /* Obj-C Frame Code Reference */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		AE78DC9E20ABBF75009A07B9 /* MainUIController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainUIController.m; sourceTree = "<group>"; };
 		AE78DCA020ABBFA0009A07B9 /* Calculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		AE78DCA120ABBFA0009A07B9 /* Calculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
+		AE78DCA320AD1CC7009A07B9 /* Obj-C Frame Code Reference */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Obj-C Frame Code Reference"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				AE78DC9E20ABBF75009A07B9 /* MainUIController.m */,
 				AE78DCA020ABBFA0009A07B9 /* Calculator.h */,
 				AE78DCA120ABBFA0009A07B9 /* Calculator.m */,
+				AE78DCA320AD1CC7009A07B9 /* Obj-C Frame Code Reference */,
 				AE78DC7320ABBF1D009A07B9 /* Assets.xcassets */,
 				AE78DC7520ABBF1D009A07B9 /* MainMenu.xib */,
 				AE78DC7820ABBF1D009A07B9 /* Info.plist */,
@@ -239,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE78DCA420AD1CC7009A07B9 /* Obj-C Frame Code Reference in Resources */,
 				AE78DC7420ABBF1D009A07B9 /* Assets.xcassets in Resources */,
 				AE78DC7720ABBF1D009A07B9 /* MainMenu.xib in Resources */,
 			);

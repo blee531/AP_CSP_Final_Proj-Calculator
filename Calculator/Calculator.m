@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Ushio Cheng. All rights reserved.
 //
 
-//Continue @ Line 41
+//Continue @ Line 72-85
 
 #import "Calculator.h"
 
@@ -17,34 +17,75 @@
 -(double)evaluateExpression:(NSString *) expression{
     //variable declearation
     NSUInteger inputLength = expression.length;
-    NSMutableArray * charList = [[NSMutableArray alloc] initWithCapacity:inputLength];
-    NSMutableArray * operatorPosition = [[NSMutableArray alloc] initWithCapacity:1];
-    int operationNumber = 0;
-    NSMutableDictionary * operationList = [[NSMutableDictionary alloc] initWithCapacity:1];
-    double result=404;//if return 404, result may failed to be operated
+    NSMutableArray * charList = [[NSMutableArray alloc] initWithCapacity:inputLength];//NSS array of char of string input
+    NSMutableArray * operatorPosition = [[NSMutableArray alloc] initWithCapacity:1];//NSN array of operartor position
+    NSMutableArray * operationList = [[NSMutableArray alloc] initWithCapacity:1];//NSS array of operator at position
+    NSMutableArray * operationHierarchy = [[NSMutableArray alloc] initWithCapacity:1];
+    NSMutableArray * partitionedNumberInStringList = [[NSMutableArray alloc] initWithCapacity:1];
+    NSMutableArray * partitionedNumberInDoubleList = [[NSMutableArray alloc] initWithCapacity:1];
+    NSUInteger * partitionPointer = 0;
+    NSMutableString * stringBuffer = [[NSMutableString alloc] initWithCapacity:1];
+    int operationCount = 0;
+    double result=0;//if return 0, result may failed to be operated
+    
+    
+    
     //main
+    //find position of operartor/partition number
+    [stringBuffer setString:@""];
+    [partitionedNumberInStringList replaceObjectAtIndex:0 withObject:stringbuffer];
     for(NSUInteger pointer = 0;pointer<expression.length;pointer++){
         char charAtPointer = [expression characterAtIndex:pointer];
         NSString * stringFormOfCharAtPointer = [[NSString alloc] initWithFormat:@"%c", charAtPointer];
         [charList replaceObjectAtIndex:pointer withObject:stringFormOfCharAtPointer];
         if(charAtPointer=='+'||charAtPointer=='-'||charAtPointer=='*'||charAtPointer=='/'){
             [operatorPosition addObject:[[NSNumber alloc] initWithUnsignedLong:pointer]];
-            operationNumber++;
+            operationCount++;
+            [partitionedNumberInStringList insertObject:stringBuffer atIndex:partitionPointer];
+            [stringBuffer setString:@""];
+            partitionPointer++;
+        } else {
+            [stringBuffer appendString:stringFormOfCharAtPointer];
         }
     }
-    if (operationNumber==0) {
+    
+    
+    if (operationCount==0) {
         goto noOperation;
+    }//if no operation jump and log error
+    
+    
+    [partitionedNumberInDoubleList removeAllObjects];
+    for(NSString * item in partitionedNumberInStringList){
+        [partitionedNumberInDoubleList addObject:[[NSNumber alloc] initWithDouble:[Calculator constructNumberFromString:item]];
     }
+    
+    
     [operatorPosition removeObjectAtIndex:0];
-    for(NSUInteger pointer = 0;pointer<operationNumber;pointer++){
-        char charAtPointer = [expression characterAtIndex:pointer];
-        NSString * stringFormOfCharAtPointer = [[NSString alloc] initWithFormat:@"%c", charAtPointer];
-        [operationList setObject:stringFormOfCharAtPointer forKey:operatorPosition[pointer]];
-    }//------------------------------------------------Add operator analyze function
+    [charList removeObjectAtIndex:0];
+    
+    
+    for(NSUInteger pointer = 0;pointer<operationCount;pointer++){
+        char charAtListAccordingToPointer = [expression characterAtIndex:(unsigned long int)operatorPosition[pointer]];
+        NSString * stringFormOfCharAtPointer = [[NSString alloc] initWithFormat:@"%c", charAtListAccordingToPointer];
+        [operationList addObject:stringFormOfCharAtPointer];
+        [operationHierarchy addObject:@0];
+    }//Create operation List
+    
+    
+    [operationList removeObjectAtIndex:0];
+    [operationHierarchy removeObjectAtIndex:0];
+    
+    
+    for(NSUInteger pointer = 0;pointer<operationCount;pointer++){
+        if ([operationList[pointer] isEqual:"*"]||[operationList[pointer] isEqual:"/"]) {
+            [operationHierarchy replaceObjectAtIndex: withObject:[[NSNumber alloc] numberWithInt: (operationCount-(int)pointer+1)]];
+        }//calc. operation hierarchy
+    }
     
     noOperation : {//label, jump when no operation sign found
         //return section
-        if (operationNumber==0) {
+        if (operationCount==0) {
             //!!!: NO operation Error
             NSLog(@"Error! error from calculator.eval there is no operator!");
             return result;//change to output orig number
@@ -68,7 +109,7 @@
  *      }
  * @endcode
  */
-+(double)constructNumberFromString:(NSMutableString *) stringFormNumber{
++(double)constructNumberFromString:(NSString *) stringFormNumber{
     int percisionLevel = -1;
     Boolean errorQ = false;
     double result=0;

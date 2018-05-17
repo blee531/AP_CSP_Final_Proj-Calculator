@@ -16,6 +16,7 @@
 		AE78DC9F20ABBF75009A07B9 /* MainUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DC9E20ABBF75009A07B9 /* MainUIController.m */; };
 		AE78DCA220ABBFA0009A07B9 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78DCA120ABBFA0009A07B9 /* Calculator.m */; };
 		AE78DCA420AD1CC7009A07B9 /* Obj-C Frame Code Reference in Resources */ = {isa = PBXBuildFile; fileRef = AE78DCA320AD1CC7009A07B9 /* Obj-C Frame Code Reference */; };
+		AE78DCA620AD2784009A07B9 /* Develop Log in Resources */ = {isa = PBXBuildFile; fileRef = AE78DCA520AD2784009A07B9 /* Develop Log */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		AE78DCA020ABBFA0009A07B9 /* Calculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		AE78DCA120ABBFA0009A07B9 /* Calculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 		AE78DCA320AD1CC7009A07B9 /* Obj-C Frame Code Reference */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Obj-C Frame Code Reference"; sourceTree = "<group>"; };
+		AE78DCA520AD2784009A07B9 /* Develop Log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Develop Log"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				AE78DCA320AD1CC7009A07B9 /* Obj-C Frame Code Reference */,
 				AE78DC7320ABBF1D009A07B9 /* Assets.xcassets */,
 				AE78DC7520ABBF1D009A07B9 /* MainMenu.xib */,
+				AE78DCA520AD2784009A07B9 /* Develop Log */,
 				AE78DC7820ABBF1D009A07B9 /* Info.plist */,
 				AE78DC7920ABBF1D009A07B9 /* main.m */,
 				AE78DC7B20ABBF1D009A07B9 /* Calculator.entitlements */,
@@ -242,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE78DCA620AD2784009A07B9 /* Develop Log in Resources */,
 				AE78DCA420AD1CC7009A07B9 /* Obj-C Frame Code Reference in Resources */,
 				AE78DC7420ABBF1D009A07B9 /* Assets.xcassets in Resources */,
 				AE78DC7720ABBF1D009A07B9 /* MainMenu.xib in Resources */,

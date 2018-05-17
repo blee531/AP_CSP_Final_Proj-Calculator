@@ -1,0 +1,19 @@
+Start from 20180506.195941
+
+@time{20180506.200000}{
+finished some function
+finished most part of main analyze funciton
+    -part-
+    receive string
+    count operation
+    list operation
+    -end-
+Haven't finish main analyze function
+    -part-
+    analyze operation hierarchy
+    create number digit list
+    construct number base on list
+    -end-
+Haven't finish UI Controller
+Haven't finish UI.xib
+}

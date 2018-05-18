@@ -33,7 +33,7 @@
     //main
     //find position of operartor/partition number
     [stringBuffer setString:@""];
-    [partitionedNumberInStringList replaceObjectAtIndex:0 withObject:stringbuffer];
+    [partitionedNumberInStringList replaceObjectAtIndex:0 withObject:stringBuffer];
     for(NSUInteger pointer = 0;pointer<expression.length;pointer++){
         char charAtPointer = [expression characterAtIndex:pointer];
         NSString * stringFormOfCharAtPointer = [[NSString alloc] initWithFormat:@"%c", charAtPointer];
@@ -41,7 +41,7 @@
         if(charAtPointer=='+'||charAtPointer=='-'||charAtPointer=='*'||charAtPointer=='/'){
             [operatorPosition addObject:[[NSNumber alloc] initWithUnsignedLong:pointer]];
             operationCount++;
-            [partitionedNumberInStringList insertObject:stringBuffer atIndex:partitionPointer];
+            [partitionedNumberInStringList insertObject:stringBuffer atIndex:*partitionPointer];//+*to convert memory pointer to value
             [stringBuffer setString:@""];
             partitionPointer++;
         } else {
@@ -57,7 +57,7 @@
     
     [partitionedNumberInDoubleList removeAllObjects];
     for(NSString * item in partitionedNumberInStringList){
-        [partitionedNumberInDoubleList addObject:[[NSNumber alloc] initWithDouble:[Calculator constructNumberFromString:item]];
+        [partitionedNumberInDoubleList addObject:[[NSNumber alloc] initWithDouble:[Calculator constructNumberFromString:item]]];
     }
     
     
@@ -78,8 +78,8 @@
     
     
     for(NSUInteger pointer = 0;pointer<operationCount;pointer++){
-        if ([operationList[pointer] isEqual:"*"]||[operationList[pointer] isEqual:"/"]) {
-            [operationHierarchy replaceObjectAtIndex: withObject:[[NSNumber alloc] numberWithInt: (operationCount-(int)pointer+1)]];
+        if ([operationList[pointer] isEqual:@"*"]||[operationList[pointer] isEqual:@"/"]) {
+            [operationHierarchy replaceObjectAtIndex:pointer withObject:[[NSNumber alloc] initWithInt: (operationCount-(int)pointer+1)]];
         }//calc. operation hierarchy
     }
     

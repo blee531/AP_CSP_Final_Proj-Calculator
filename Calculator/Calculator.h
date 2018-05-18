@@ -18,7 +18,7 @@
 
 -(double)evaluateExpression:(NSString *) expression;
 
-+(double)constructNumberFromString:(NSMutableString *) stringFormNumber;
++(double)constructNumberFromString:(NSString *) stringFormNumber;
 
 +(double)appendInteger:(int)integer toNumber:(double)originalNumber withPercision:(int) percision;
 
